@@ -1,34 +1,32 @@
-async function getPhotographers() {
-  //récupération des photographes
-  const photographersResponse = await fetch("photographers.json");
-  const photographersData = await photographersResponse.json();
+import { PhotographersApi } from "../api/api.js";
+import { Photographer } from "../class/photographer.js";
+import { PhotographerCard } from "../templates/photographer.js";
 
-  return photographersData;
-}
+class Homepage {
+  constructor() {
+    // Get data
+    this.photographersApi = new PhotographersApi("data/photographers.json");
+    // Get element
+    this.$photographersListWrapper =
+      document.querySelector("#photographerList");
+  }
 
-async function displayData(photographers) {
-  //création de la section photographes
-  const photographersSection = document.querySelector(".photographer_section");
+  // Render photographer list
+  async photographer() {
+    const photographerData = await this.photographersApi.getPhotographers();
+    console.log(photographerData.photographers);
+    const photographersArray = photographerData.photographers;
 
-  //boucle sur le json
-  photographers.forEach((photographer) => {
-    const photographerModel = photographerTemplate(photographer);
-    const userCardDOM = photographerModel.getUserCardDOM();
-
-    //ajout des éléments à la classe "photographer_section"
-    photographersSection.appendChild(userCardDOM);
-  });
-}
-
-async function init() {
-  // Récupère les datas des photographes
-  try {
-    const photographers = await getPhotographers();
-    displayData(photographers);
-    console.log(photographers);
-  } catch (error) {
-    console.error("Error fetching photographers data:", error);
+    photographersArray
+      .map((photographer) => new Photographer(photographer))
+      .forEach((photographer) => {
+        const template = new PhotographerCard(photographer);
+        this.$photographersListWrapper.appendChild(
+          template.createPhotographerCard()
+        );
+      });
   }
 }
 
-init();
+const homepage = new Homepage();
+homepage.photographer();
