@@ -142,6 +142,7 @@ class Lightbox {
         const carouselVideo = document.createElement('video')
         carouselVideo.innerHTML = 'Type: Video'
         carouselVideo.classList.add('carousel-media')
+        carouselVideo.alt(mediaItem.video)
         const mediaPath = `assets/images/${photographer.name}/${mediaItem.video}`
         console.log(mediaPath)
         carouselVideo.setAttribute('id', `media-${mediaId}`)
