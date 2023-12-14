@@ -323,7 +323,7 @@ header {
   font-size: 16px;
   border: none;
   cursor: pointer;
-  width:14.5em;
+  width:auto;
   align-items: center;
 }
 
@@ -364,7 +364,11 @@ header {
 .dropdown-content a:hover {background-color: #ddd;}
 
 /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
-.show {display:block;}
+.show {
+  display:block;
+  /* position: absolute;
+  left: 14em; */
+}
 
 .dropdownOption{
   background-color: #901c1ce6;

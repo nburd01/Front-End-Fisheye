@@ -71,15 +71,9 @@ class PhotographerWork {
     }
 
     const dropBtn = document.querySelector('.dropbtn')
-    dropBtn.addEventListener('click', function (event) {
-      if (event.target.closest('.dropbtn')) {
-          // Trigger your desired action
-          document.getElementById('myDropdown').classList.toggle('show');
-      } else {
-          // Handle clicks on other child elements
-          const clickedElement = event.target;
-          console.log('Clicked on:', clickedElement);
-      }
+    dropBtn.addEventListener('click', function () {
+      console.log('clicked')
+      document.getElementById('myDropdown').classList.toggle('show')
     })
     let selectedOption
     const dropdownOptions = document.querySelectorAll('.dropdownOption')
@@ -97,7 +91,7 @@ class PhotographerWork {
 
     // Close the dropdown menu if the user clicks outside of it
     window.onclick = function (event) {
-      if (!event.target.matches('.dropbtn < *')) {
+      if (!event.target.matches('.dropbtn>*')) {
         const dropdowns = document.getElementsByClassName('dropdown-content')
         let i
         for (i = 0; i < dropdowns.length; i++) {
