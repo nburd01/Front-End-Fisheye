@@ -323,9 +323,8 @@ header {
   font-size: 16px;
   border: none;
   cursor: pointer;
-  width:7em;
+  width:14.5em;
   align-items: center;
-  padding:0.5em;
 }
 
 /* Dropdown button on hover & focus */
@@ -370,6 +369,11 @@ header {
 .dropdownOption{
   background-color: #901c1ce6;
   color:#FFFF;
+}
+.borderDropDown{
+  /* margin-top:1em; */
+  border-bottom: 1px solid #FFFF;
+  border-width: 0.1em;
 }
 
 .dropdown-content a {
