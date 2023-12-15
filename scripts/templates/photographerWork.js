@@ -187,7 +187,6 @@ class PhotographerWork {
     // Function to handle the click on the element with class "borderDropDown"
     function handleBorderDropDownClick (event) {
       toggleDropdown()
-      const clickedElement = event.target
     }
 
     // Function to log the text content of the clicked <p> element
