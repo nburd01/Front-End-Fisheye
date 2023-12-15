@@ -8,7 +8,7 @@ class Lightbox {
     this.currentIndex = 0
   }
 
-  createLightbox (media, photographer, mediaId) {
+  createLightbox = (media, photographer, mediaId) => {
     let selectedMedia = null
     const selectedMediaArray = []
 

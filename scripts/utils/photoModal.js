@@ -14,7 +14,7 @@ $(document).on('keydown', (e) => {
 })
 
 // Func
-export async function onOpenPic () {
+export const onOpenPic = async () => {
   mainWrapper.setAttribute('aria-hidden', 'true')
   modal.setAttribute('aria-hidden', 'false')
   body.classList.add('no-scroll')
@@ -22,7 +22,7 @@ export async function onOpenPic () {
   modalCloseBtn.focus()
 }
 
-export async function onClosePic () {
+export const onClosePic = async () => {
   mainWrapper.setAttribute('aria-hidden', 'false')
   modal.setAttribute('aria-hidden', 'true')
   body.classList.remove('no-scroll')

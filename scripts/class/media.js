@@ -4,8 +4,6 @@ class Media {
     this._id = data.id
     this._photographerId = data.photographerId
     this._title = data.title
-    // this._description = data.description;
-    // this._tags = data.tags;
     this._likes = data.likes
     this._date = data.date
     this._price = data.price

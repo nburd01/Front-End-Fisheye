@@ -5,7 +5,7 @@ class AboutPhotographer {
     this._photographer = photographer
   }
 
-  createAboutPhotographer (photographer) {
+  createAboutPhotographer = (photographer) => {
     const photographHeader = document.querySelector('#photograph-header')
 
     const cardContainer = document.createElement('div')

@@ -4,7 +4,7 @@ class PhotographerCard {
     this._photographer = photographer
   }
 
-  createPhotographerCard (photographer) {
+  createPhotographerCard = (photographer) => {
     // créationd u template "photographer_section"
     const cardContainer = document.createElement('div')
     cardContainer.classList.add('photographer-card')

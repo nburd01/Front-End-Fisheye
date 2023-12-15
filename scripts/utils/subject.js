@@ -21,7 +21,7 @@ export { LikeSubject }
 
 const mediaLikeHeartElementClicked = document.querySelector('.fas')
 
-export async function changeHeart () {
+export const changeHeart = async () => {
   console.log(mediaLikeHeartElementClicked)
   const heartClicked = mediaLikeHeartElementClicked.style.display
 

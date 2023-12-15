@@ -58,7 +58,7 @@ class PhotographerWork {
     mediasWrapper.appendChild(counterDiv)
   }
 
-  sortMedia () {
+  sortMedia = () => {
     const piecesOrdonnees = Array.from(this._media)
     const sortedPieces = piecesOrdonnees.sort(function (a, b) {
       return a.likes - b.likes
@@ -67,7 +67,7 @@ class PhotographerWork {
   }
 
   // Render lightbox
-  renderLightBox (media) {
+  renderLightBox = (media) => {
     const photographerName = this._photographer
     media.forEach((media, index, photographer) => {
       const mediaTypeElement = document.createElement('p')
@@ -163,14 +163,14 @@ class PhotographerWork {
     })
   }
 
-  createPhotographerWork (photographer, media, counterDivLikes) {
+  createPhotographerWork = (photographer, media, counterDivLikes) => {
     let sum = this.sum
-    function changeHeart (
+    const changeHeart = (
       clickedElement,
       index,
       currentLikes,
       mediaLikeElement
-    ) {
+    ) => {
       const farElements = document.querySelectorAll('.fa-heart')
       const far = farElements[index]
       console.log(far)
@@ -277,7 +277,7 @@ class PhotographerWork {
     // renderLightBox(media)
   }
 
-  openLightbox (mediaId) {
+  openLightbox = (mediaId) => {
     const photographerPages = new PhotographerPages()
     photographerPages.lightbox(mediaId)
   }
