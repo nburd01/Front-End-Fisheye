@@ -8,11 +8,6 @@ class PhotographerWork {
     this._likeSubject = likeSubject
 
     const mediasWrapper = document.querySelector('#main')
-    const dropDownBtn = document.querySelector('.dropbtn')
-    const chevronUp = document.createElement('div')
-    chevronUp.classList.add('fa-solid', 'fa-chevron-up')
-
-    dropDownBtn.appendChild(chevronUp)
 
     const counterDiv = document.createElement('div')
     counterDiv.classList.add('counter')
@@ -70,38 +65,33 @@ class PhotographerWork {
       mediaLikeElement.innerHTML = updatedLikes
     }
 
-    const dropBtn = document.querySelector('.dropbtn')
-    dropBtn.addEventListener('click', function () {
-      console.log('clicked')
-      document.getElementById('myDropdown').classList.toggle('show')
-    })
-    let selectedOption
-    const dropdownOptions = document.querySelectorAll('.dropdownOption')
-    dropdownOptions.forEach((option) => {
-      option.addEventListener('click', function () {
-        selectedOption = option.innerHTML
-      })
-    })
-    // update brn innerHTML
-    dropdownOptions.forEach((option) => {
-      option.addEventListener('click', function () {
-        dropBtn.innerHTML = selectedOption
-      })
-    })
+// Get the drop-down button and the dropdown content
+const dropBtn = document.querySelector('.dropbtn')
+const dropdownContent = document.getElementById('myDropdown')
+const borderDropDownElement = document.querySelector('.borderDropDown')
 
-    // Close the dropdown menu if the user clicks outside of it
-    window.onclick = function (event) {
-      if (!event.target.matches('.dropbtn, .dropbtn > *')) {
-        const dropdowns = document.getElementsByClassName('dropdown-content')
-        let i
-        for (i = 0; i < dropdowns.length; i++) {
-          const openDropdown = dropdowns[i]
-          if (openDropdown.classList.contains('show')) {
-            openDropdown.classList.remove('show')
-          }
-        }
-      }
-    }
+// Function to toggle the dropdown menu
+function toggleDropdown() {
+  dropdownContent.classList.toggle('show')
+}
+
+// Attach the toggleDropdown function to the dropBtn click event
+dropBtn.addEventListener('click', toggleDropdown)
+
+// Function to handle the click on the element with class "borderDropDown"
+function handleBorderDropDownClick(event) {
+  toggleDropdown()
+}
+
+// Attach the handleBorderDropDownClick function to the "borderDropDown" element
+borderDropDownElement.addEventListener('click', handleBorderDropDownClick)
+
+// Close the dropdown menu if the user clicks outside of it
+window.onclick = function (event) {
+  if (!event.target.matches('.dropbtn, .dropbtn > *, .borderDropDown')) {
+    dropdownContent.classList.remove('show')
+  }
+}
 
     // likes
     const boutonTrierLikes = document.querySelector('.btn-popularite')
@@ -224,6 +214,7 @@ class PhotographerWork {
 
         // Add the media details container to the media container
         mediaContainer.appendChild(mediaImg)
+        mediaContainer.appendChild(mediaImg)
         mediaContainer.appendChild(mediaDetails)
         mediaContainer.appendChild(mediaDetails)
         mediaDetails.appendChild(mediaLikeContainer)
@@ -232,6 +223,10 @@ class PhotographerWork {
         mediasWrapper.appendChild(mediaContainer)
       })
     }
+    const dropDownBtn = document.querySelector('.dropbtn')
+    const chevronUp = document.createElement('div')
+    chevronUp.classList.add('fa-solid', 'fa-chevron-up')
+    dropDownBtn.appendChild(chevronUp)
     renderLightBox(media)
   }
 
