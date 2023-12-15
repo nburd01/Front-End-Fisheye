@@ -7,8 +7,6 @@ class PhotographerWork {
     this._media = media
     this._likeSubject = likeSubject
 
-    console.log("photographer",photographer)
-
     const mediasWrapper = document.querySelector('#main')
 
     const counterDiv = document.createElement('div')
@@ -53,9 +51,6 @@ class PhotographerWork {
   renderLightBox (media) {
     const photographerName = this._photographer
     media.forEach((media, index, photographer) => {
-      console.log("photographer",photographer)
-      console.log("media",media)
-      console.log("index",index)
       const mediaTypeElement = document.createElement('p')
 
       const mediasWrapper = document.querySelector('#medias-wrapper')
@@ -180,6 +175,7 @@ class PhotographerWork {
     const dropdownContent = document.getElementById('myDropdown')
     const borderDropDownElement = document.querySelector('.borderDropDown')
 
+
     // Function to toggle the dropdown menu
     function toggleDropdown () {
       dropdownContent.classList.toggle('show')
@@ -189,10 +185,30 @@ class PhotographerWork {
     dropBtn.addEventListener('click', toggleDropdown)
 
     // Function to handle the click on the element with class "borderDropDown"
-    function handleBorderDropDownClick(event) {
+    function handleBorderDropDownClick (event) {
       toggleDropdown()
+      const clickedElement = event.target
     }
 
+    // Function to log the text content of the clicked <p> element
+    function logClickedElement (event) {
+      const clickedElement = event.target
+
+      // Check if the clicked element is a <p> element
+      if (clickedElement.tagName.toLowerCase() === 'p') {
+        console.log('Clicked <p> value:', clickedElement.textContent)
+        dropBtn.innerHTML = clickedElement.textContent
+        chevronUp.classList.add('fa-solid', 'fa-chevron-up')
+        dropDownBtn.appendChild(chevronUp)
+      }
+    }
+
+    // Attach a click event listener to each element inside "myDropdown"
+    const dropdownElements = dropdownContent.querySelectorAll('*')
+
+    dropdownElements.forEach(element => {
+      element.addEventListener('click', logClickedElement)
+    })
     // Attach the handleBorderDropDownClick function to the "borderDropDown" element
     borderDropDownElement.addEventListener('click', handleBorderDropDownClick)
 
@@ -202,7 +218,6 @@ class PhotographerWork {
         dropdownContent.classList.remove('show')
       }
     }
-
 
     // likes
     const boutonTrierLikes = document.querySelector('.btn-popularite')
@@ -215,7 +230,6 @@ class PhotographerWork {
       document.querySelector('#medias-wrapper').innerHTML = ''
       this.renderLightBox(piecesOrdonnees)
     })
-
 
     // dates
     const boutonFiltrerDates = document.querySelector('.btn-dates')
@@ -243,7 +257,7 @@ class PhotographerWork {
     const chevronUp = document.createElement('div')
     chevronUp.classList.add('fa-solid', 'fa-chevron-up')
     dropDownBtn.appendChild(chevronUp)
-    renderLightBox(media)
+    // renderLightBox(media)
   }
 
   openLightbox (mediaId) {
