@@ -9,38 +9,37 @@ $(document).on('keydown', (e) => {
   const keyCode = e.keyCode ? e.keyCode : e.which
 
   if (modal.getAttribute('aria-hidden') === 'false' && keyCode === 27) {
-    console.log(123)
     closeModal()
   }
 })
 
-export function displayModal () {
+export const displayModal = () => {
   const modal = document.getElementById('contact_modal')
   modal.style.display = 'block'
 }
 
-export function closeModal () {
+export const closeModal = () => {
   const modal = document.getElementById('contact_modal')
   modal.style.display = 'none'
 }
 
-export function closePhotoModal () {
+export const closePhotoModal = () => {
   const modal = document.getElementById('modal-wrapper')
   modal.style.display = 'none'
 }
 
 // display validation message
-function displayValidationMessage () {
+const displayValidationMessage = () => {
   validationMessage.style.display = 'flex'
   validationMessage.textContent = 'Merci! Votre réservation a été reçue.'
 }
 
 // hide modal form content
-function hideContent () {
+const hideContent = () => {
   formBod.style.display = 'none'
 }
 
-function validate (event) {
+const validate = (event) => {
   // paramètre event
   try {
     event.preventDefault() // prevents page refreshing when form is filled
