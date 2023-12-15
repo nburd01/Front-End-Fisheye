@@ -25,6 +25,25 @@ class PhotographerWork {
 
     counterDivLikes.innerHTML = this.sum
 
+    this.changeHeart = (clickedElement, index, currentLikes, mediaLikeElement) => {
+      const farElements = document.querySelectorAll('.fa-heart')
+      const far = farElements[index]
+      console.log(far)
+      far.classList.toggle('far')
+      far.classList.toggle('fas')
+
+      const updatedLikes = far.classList.contains('far') ? currentLikes + 0 : currentLikes + 1
+
+      this.sum = this.sum + (far.classList.contains('far') ? -1 : 1)
+      console.log('newSum', this.sum)
+
+      const counterDivLikes = document.querySelector('.likes')
+      if (counterDivLikes) {
+        counterDivLikes.innerHTML = this.sum
+      }
+      mediaLikeElement.innerHTML = updatedLikes
+    }
+
     counterDivLikes
     this.sortMedia()
     const counterDivPrice = document.createElement('div')
@@ -86,13 +105,13 @@ class PhotographerWork {
       far.classList.add('far', 'fa-heart')
       far.setAttribute('data-index', index)
       far.onclick = () =>
-        changeHeart(
+        this.changeHeart(
           far,
           index,
           media.likes,
           mediaLikeElement,
-          sum,
-          counterDivLikes
+          this.sum,
+          document.querySelector('.likes')
         )
 
       if (media.image) {
@@ -175,7 +194,6 @@ class PhotographerWork {
     const dropdownContent = document.getElementById('myDropdown')
     const borderDropDownElement = document.querySelector('.borderDropDown')
 
-
     // Function to toggle the dropdown menu
     function toggleDropdown () {
       dropdownContent.classList.toggle('show')
@@ -205,7 +223,7 @@ class PhotographerWork {
     // Attach a click event listener to each element inside "myDropdown"
     const dropdownElements = dropdownContent.querySelectorAll('*')
 
-    dropdownElements.forEach(element => {
+    dropdownElements.forEach((element) => {
       element.addEventListener('click', logClickedElement)
     })
     // Attach the handleBorderDropDownClick function to the "borderDropDown" element
